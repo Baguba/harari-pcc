@@ -40,6 +40,11 @@ export const metadata: Metadata = {
     "Directive 1/2007",
   ],
   authors: [{ name: "Innovation and Technology Agency" }],
+  icons: {
+    icon: "/logo.png?v=2",
+    shortcut: "/logo.png?v=2",
+    apple: "/logo.png?v=2",
+  },
 };
 
 export default function RootLayout({
