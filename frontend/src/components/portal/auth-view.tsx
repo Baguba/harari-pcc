@@ -9,6 +9,8 @@ import {
   ShieldCheck,
   Check,
   X,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,6 +49,7 @@ export function AuthView({ initialMode }: { initialMode: Mode }) {
   const [mode, setMode] = useState<Mode>(initialMode);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [region, setRegion] = useState("Amir-Nur Woreda");
@@ -96,9 +99,20 @@ export function AuthView({ initialMode }: { initialMode: Mode }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      const data = await res.json();
+      let data: any = null;
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        data = await res.json();
+      }
+
       if (!res.ok) {
-        throw new Error(data.error || "Authentication failed");
+        if (data?.error) {
+          throw new Error(data.error);
+        }
+        if (res.status === 500 || res.status === 502 || res.status === 503 || res.status === 504) {
+          throw new Error("Backend server is unreachable or encountered an error. Please ensure the backend is running on port 5000.");
+        }
+        throw new Error(`Authentication failed (HTTP ${res.status})`);
       }
 
       const user = data.user as SessionUser;
@@ -148,6 +162,7 @@ export function AuthView({ initialMode }: { initialMode: Mode }) {
   const switchMode = () => {
     setMode((m) => (m === "login" ? "signup" : "login"));
     setPassword("");
+    setShowPassword(false);
   };
 
   const isSignup = mode === "signup";
@@ -216,16 +231,31 @@ export function AuthView({ initialMode }: { initialMode: Mode }) {
               <Label htmlFor="password">
                 {t("admin.login.password", lang)} <span className="text-destructive">*</span>
               </Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="mt-1.5"
-                required
-                minLength={8}
-                autoComplete={isSignup ? "new-password" : "current-password"}
-              />
+              <div className="relative mt-1.5">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="pr-10"
+                  required
+                  minLength={8}
+                  autoComplete={isSignup ? "new-password" : "current-password"}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 rounded-sm flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors"
+                  aria-label={showPassword ? t("password.hide", lang) : t("password.show", lang)}
+                  title={showPassword ? t("password.hide", lang) : t("password.show", lang)}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4" aria-hidden="true" />
+                  ) : (
+                    <Eye className="h-4 w-4" aria-hidden="true" />
+                  )}
+                </button>
+              </div>
 
               {/* Password strength indicator for signup */}
               {isSignup && password.length > 0 && (

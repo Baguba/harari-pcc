@@ -71,32 +71,35 @@ export function CategoriesView() {
   return (
     <div className="container mx-auto max-w-7xl px-4 py-10">
       <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">
+        <span className="eyebrow-label">
+          {lang === "en" ? "DIRECTORY" : lang === "am" ? "ማውጫ" : "Qajeelcha"}
+        </span>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mt-1 mb-2">
           {t("cat.title", lang)}
         </h1>
-        <p className="text-muted-foreground">{t("cat.subtitle", lang)}</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400 max-w-2xl">{t("cat.subtitle", lang)}</p>
       </div>
 
-      {/* Search + filter */}
-      <div className="sticky top-16 z-30 -mx-4 px-4 py-3 bg-background/95 backdrop-blur border-b border-border mb-6">
-        <div className="flex flex-col sm:flex-row gap-2">
+      {/* Search + filter floating bar */}
+      <div className="sticky top-20 z-30 mb-8 p-3 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 shadow-sm">
+        <div className="flex flex-col sm:flex-row gap-2.5">
           <div className="relative flex-1">
             <Search
-              className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400"
               aria-hidden
             />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t("cat.search.placeholder", lang)}
-              className="pl-9 pr-9"
+              className="pl-10 pr-9 rounded-full bg-slate-50/80 dark:bg-slate-800/80 border-slate-200/80 dark:border-slate-700 text-xs sm:text-sm h-10"
               aria-label={t("common.search", lang)}
             />
             {query && (
               <button
                 type="button"
                 onClick={() => setQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
                 aria-label="Clear search"
               >
                 <X className="h-4 w-4" aria-hidden />
@@ -104,12 +107,12 @@ export function CategoriesView() {
             )}
           </div>
           <div className="flex items-center gap-2">
-            <Filter className="h-4 w-4 text-muted-foreground" aria-hidden />
+            <Filter className="h-4 w-4 text-slate-400 hidden sm:block" aria-hidden />
             <Select
               value={group}
               onValueChange={(v) => setGroup(v as ActivityGroupKey | "all")}
             >
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-full sm:w-[200px] rounded-full bg-slate-50/80 dark:bg-slate-800/80 border-slate-200/80 dark:border-slate-700 text-xs h-10">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -123,17 +126,20 @@ export function CategoriesView() {
             </Select>
           </div>
         </div>
-        <div className="mt-2 text-xs text-muted-foreground">
-          {filtered.length} {t("cat.results", lang)}
+        <div className="mt-2.5 px-1 flex items-center justify-between text-xs text-slate-500">
+          <div>
+            <span className="font-semibold text-slate-900 dark:text-white font-mono">{filtered.length}</span>{" "}
+            {t("cat.results", lang)}
+          </div>
           {(query || group !== "all") && (
             <button
               onClick={() => {
                 setQuery("");
                 setGroup("all");
               }}
-              className="ml-2 text-primary hover:underline"
+              className="text-primary hover:underline font-medium cursor-pointer"
             >
-              {lang === "en" ? "Clear filters" : lang === "am" ? "ማጣሪያዎችን አጽዳ" : "Calaltuu qulqulleessi"}
+              {lang === "en" ? "Reset filters" : lang === "am" ? "ማጣሪያዎችን አጽዳ" : "Calaltuu qulqulleessi"}
             </button>
           )}
         </div>

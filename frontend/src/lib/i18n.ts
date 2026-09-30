@@ -233,6 +233,8 @@ const strings: StringMap = {
   "password.rule.uppercase": { en: "One uppercase letter", am: "አንድ ትልቅ ፊደል", om: "Qubee guddaa tokko" },
   "password.rule.lowercase": { en: "One lowercase letter", am: "አንድ ትንሽ ፊደል", om: "Qubee xinnoo tokko" },
   "password.rule.digit": { en: "One digit", am: "አንድ ቁጥር", om: "Lakkoofsa tokko" },
+  "password.show": { en: "Show password", am: "የይለፍ ቃል አሳይ", om: "Jecha icciitii agarsiisi" },
+  "password.hide": { en: "Hide password", am: "የይለፍ ቃል ደብቅ", om: "Jecha icciitii dhoksi" },
   "apply.notes": { en: "Notes (optional)", am: "ማስታወሻዎች (አማራጭ)", om: "Yaadannoo (dirqama miti)" },
   "apply.upload.label": { en: "Upload", am: "ይስቀሉ", om: "Ol-kaa'i" },
   "apply.uploaded": { en: "Uploaded", am: "ተሰቅሏል", om: "Ol-kaa'amee jira" },

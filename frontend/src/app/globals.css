@@ -48,13 +48,10 @@
 
 :root {
   /* ============================================================
-     PCC brand palette — EXACT HEX values per directive spec.
-     Do NOT convert to oklch or any other color space — these
-     are the authoritative brand colors and must render identically
-     across browsers.
+     PCC brand palette — Modern SaaS & Clean Tech aesthetic
      ============================================================ */
 
-  --radius: 0.625rem;
+  --radius: 0.875rem;
 
   /* Primary: Emerald Green */
   --primary: #0F6B4A;
@@ -64,91 +61,91 @@
   --secondary: #1F4E8C;
   --secondary-foreground: #FAFBFC;
 
-  /* Accent: Gold */
+  /* Accent: Gold / Amber */
   --accent: #C89B3C;
-  --accent-foreground: #1F2937;
+  --accent-foreground: #0F172A;
 
-  /* Background: Soft White */
-  --background: #FAFBFC;
-  /* Text: Dark Gray */
-  --foreground: #1F2937;
+  /* Background: Crisp modern soft off-white */
+  --background: #FAFAFC;
+  /* Text: Slate 900 */
+  --foreground: #0F172A;
 
-  /* Surface: Warm Sand */
-  --surface: #E8DDC8;
-  --surface-foreground: #1F2937;
+  /* Surface: Soft tint */
+  --surface: #F1F5F9;
+  --surface-foreground: #0F172A;
 
-  /* Card & Popover: pure white on top of soft-white bg */
+  /* Card & Popover: pure white on top of soft bg */
   --card: #FFFFFF;
-  --card-foreground: #1F2937;
+  --card-foreground: #0F172A;
   --popover: #FFFFFF;
-  --popover-foreground: #1F2937;
+  --popover-foreground: #0F172A;
 
   /* Muted */
-  --muted: #F1F3F5;
-  --muted-foreground: #6B7280;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
 
   /* Destructive (red) */
-  --destructive: #B91C1C;
+  --destructive: #EF4444;
   --destructive-foreground: #FAFBFC;
 
-  /* Border & Input: Light Gray */
-  --border: #D1D5DB;
-  --input: #E5E7EB;
+  /* Border & Input: Slate 200 hairline */
+  --border: #E2E8F0;
+  --input: #E2E8F0;
   --ring: #0F6B4A;
 
-  /* Chart palette — brand-aligned */
-  --chart-1: #0F6B4A; /* Primary emerald */
-  --chart-2: #1F4E8C; /* Secondary royal blue */
-  --chart-3: #C89B3C; /* Accent gold */
-  --chart-4: #4FA07F; /* Lighter emerald */
-  --chart-5: #6B8DBF; /* Lighter royal blue */
+  /* Chart palette */
+  --chart-1: #0F6B4A;
+  --chart-2: #1F4E8C;
+  --chart-3: #C89B3C;
+  --chart-4: #10B981;
+  --chart-5: #3B82F6;
 
   /* Sidebar (admin) */
-  --sidebar: #FAFBFC;
-  --sidebar-foreground: #1F2937;
+  --sidebar: #FAFAFC;
+  --sidebar-foreground: #0F172A;
   --sidebar-primary: #0F6B4A;
   --sidebar-primary-foreground: #FAFBFC;
-  --sidebar-accent: #E8DDC8;
-  --sidebar-accent-foreground: #1F2937;
-  --sidebar-border: #D1D5DB;
+  --sidebar-accent: #F1F5F9;
+  --sidebar-accent-foreground: #0F172A;
+  --sidebar-border: #E2E8F0;
   --sidebar-ring: #0F6B4A;
 }
 
 .dark {
-  /* Dark theme variants — keep brand hues but darken backgrounds */
-  --background: #0F172A;
-  --foreground: #FAFBFC;
-  --card: #1E293B;
-  --card-foreground: #FAFBFC;
-  --popover: #1E293B;
-  --popover-foreground: #FAFBFC;
+  /* Dark theme variants */
+  --background: #0B0F19;
+  --foreground: #F8FAFC;
+  --card: #131B2E;
+  --card-foreground: #F8FAFC;
+  --popover: #131B2E;
+  --popover-foreground: #F8FAFC;
   --primary: #10B981;
-  --primary-foreground: #0F172A;
+  --primary-foreground: #0B0F19;
   --secondary: #3B82F6;
   --secondary-foreground: #FAFBFC;
-  --muted: #334155;
+  --muted: #1E293B;
   --muted-foreground: #94A3B8;
   --accent: #FBBF24;
-  --accent-foreground: #1F2937;
+  --accent-foreground: #0F172A;
   --destructive: #EF4444;
   --destructive-foreground: #FAFBFC;
-  --border: #334155;
-  --input: #475569;
+  --border: #1E293B;
+  --input: #334155;
   --ring: #10B981;
-  --surface: #4A3F2A;
+  --surface: #1E293B;
   --surface-foreground: #FAFBFC;
   --chart-1: #10B981;
   --chart-2: #3B82F6;
   --chart-3: #FBBF24;
   --chart-4: #34D399;
   --chart-5: #60A5FA;
-  --sidebar: #1E293B;
+  --sidebar: #131B2E;
   --sidebar-foreground: #FAFBFC;
   --sidebar-primary: #10B981;
   --sidebar-primary-foreground: #FAFBFC;
-  --sidebar-accent: #4A3F2A;
+  --sidebar-accent: #1E293B;
   --sidebar-accent-foreground: #FAFBFC;
-  --sidebar-border: #334155;
+  --sidebar-border: #1E293B;
   --sidebar-ring: #10B981;
 }
 
@@ -158,13 +155,14 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     font-feature-settings: "cv11", "ss01";
     -webkit-font-smoothing: antialiased;
   }
-  /* Serif headings — PM Office style */
+  /* Modern clean sans-serif headings */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: -0.025em;
   }
 }
 
@@ -210,7 +208,7 @@
 }
 
 /* ============================================================
-   SPLIT-HERO LAYOUT (PM Office style)
+   MODERN SAAS & TECH PLATFORM STYLING
    ============================================================ */
 
 .split-hero {
@@ -256,11 +254,12 @@
 }
 
 .split-hero__brand-text {
-  font-size: 12px;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-size: 11px;
   color: var(--muted-foreground);
   line-height: 1.4;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
 }
 
 .split-hero__brand-text strong {
@@ -272,11 +271,11 @@
 }
 
 .split-hero__title {
-  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   font-size: clamp(28px, 3.5vw, 44px);
   font-weight: 800;
   line-height: 1.15;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.035em;
   color: var(--foreground);
   margin: 0 0 28px;
   text-transform: uppercase;
@@ -284,6 +283,7 @@
 
 .split-hero__title span {
   color: var(--primary);
+  font-weight: 900;
 }
 
 /* Decorative quote */
@@ -297,18 +297,20 @@
 .split-hero__quote-icon {
   color: var(--accent);
   margin-bottom: 6px;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 .split-hero__quote p {
-  font-size: 14px;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14.5px;
   line-height: 1.7;
   color: var(--muted-foreground);
   margin: 0 0 12px;
-  font-style: italic;
+  font-style: normal;
 }
 
 .split-hero__quote cite {
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
@@ -458,9 +460,10 @@
 }
 
 .split-hero__slide-title {
-  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   font-size: clamp(22px, 2.8vw, 36px);
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.025em;
   line-height: 1.25;
   margin: 0 0 8px;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
@@ -609,11 +612,211 @@
 
 /* Card hover lift */
 .card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
 }
 .card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px -8px rgba(31, 41, 55, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.08);
+}
+
+/* Ambient mesh glow background */
+.ambient-glow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: 520px;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(147, 197, 253, 0.25) 0%,
+    rgba(196, 181, 253, 0.20) 35%,
+    rgba(209, 250, 229, 0.15) 65%,
+    transparent 80%
+  );
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-glow-purple {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(196, 181, 253, 0.25) 0%,
+    rgba(224, 231, 255, 0.2) 40%,
+    transparent 70%
+  );
+  filter: blur(50px);
+}
+
+/* Modern SaaS Card */
+.saas-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 1.25rem;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 8px 24px -4px rgba(15, 23, 42, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.saas-card:hover {
+  transform: translateY(-3px);
+  border-color: #CBD5E1;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.05),
+    0 16px 36px -6px rgba(15, 23, 42, 0.08);
+}
+
+.dark .saas-card {
+  background: #131B2E;
+  border-color: #1E293B;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark .saas-card:hover {
+  border-color: #334155;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Icon badges */
+.badge-icon-blue {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  background-color: #EFF6FF;
+  color: #2563EB;
+  border: 1px solid #DBEAFE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon-emerald {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  background-color: #ECFDF5;
+  color: #059669;
+  border: 1px solid #D1FAE5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon-amber {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  background-color: #FFFBEB;
+  color: #D97706;
+  border: 1px solid #FEF3C7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Browser Mockup Window */
+.browser-frame {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 1.5rem;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 20px 40px -10px rgba(15, 23, 42, 0.08),
+    0 0 0 1px rgba(226, 232, 240, 0.6);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.browser-frame:hover {
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.06),
+    0 28px 50px -12px rgba(15, 23, 42, 0.12);
+}
+
+.dark .browser-frame {
+  background: #111827;
+  border-color: #1F2937;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.browser-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.dark .browser-header {
+  background: #0F172A;
+  border-bottom-color: #1E293B;
+}
+
+.browser-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+}
+
+.browser-address-bar {
+  flex: 1;
+  max-width: 320px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-size: 11px;
+  color: #64748B;
+  font-family: var(--font-mono, monospace);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.dark .browser-address-bar {
+  background: #1E293B;
+  border-color: #334155;
+  color: #94A3B8;
+}
+
+/* Step pipeline flow */
+.step-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background-color: #10B981;
+  box-shadow: 0 0 0 4px #D1FAE5;
+}
+
+.step-line {
+  height: 2px;
+  background-color: #A7F3D0;
+  flex: 1;
+  min-width: 36px;
+}
+
+/* Section Eyebrow Label */
+.eyebrow-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #64748B;
 }
 
 /* ============================================================

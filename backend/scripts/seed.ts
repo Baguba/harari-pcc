@@ -27,12 +27,14 @@ async function hashPassword(plain: string): Promise<string> {
 }
 
 async function main() {
-  // --- Super Admin ---git add .
-
-
+  // --- Super Admin ---
   const superAdmin = await db.user.upsert({
     where: { email: "superadmin@mcit.gov.et" },
-    update: {},
+    update: {
+      role: "super_admin",
+      password: await hashPassword("SuperAdmin1"),
+      active: true,
+    },
     create: {
       email: "superadmin@mcit.gov.et",
       name: "Super Administrator",
@@ -47,7 +49,11 @@ async function main() {
   // --- Regular Admin (MCIT staff reviewer) ---
   const admin = await db.user.upsert({
     where: { email: "admin@mcit.gov.et" },
-    update: {},
+    update: {
+      role: "admin",
+      password: await hashPassword("AdminPass1"),
+      active: true,
+    },
     create: {
       email: "admin@mcit.gov.et",
       name: "Harari Region Reviewer",

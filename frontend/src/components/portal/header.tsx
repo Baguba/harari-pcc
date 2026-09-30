@@ -76,49 +76,51 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="container mx-auto max-w-7xl flex h-16 items-center justify-between gap-2 px-4">
+    <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/85 dark:bg-slate-950/85 backdrop-blur-md">
+      <div className="container mx-auto max-w-7xl flex h-16 items-center justify-between gap-3 px-4">
         {/* Brand */}
         <button
           type="button"
           onClick={() => setView({ name: "home" })}
-          className="flex items-center gap-2.5 group"
+          className="flex items-center gap-2.5 group cursor-pointer"
           aria-label={t("brand.name", lang)}
         >
           <div className="h-10 w-10 flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
             <img src="/logo.png" alt="PCC Logo" className="h-9 w-9 object-contain" />
           </div>
           <div className="hidden sm:block text-left leading-tight">
-            <div className="text-sm font-bold text-foreground">
+            <div className="text-sm font-bold tracking-tight text-slate-900 dark:text-white">
               {t("brand.name", lang)}
             </div>
-            <div className="text-[11px] text-muted-foreground">
+            <div className="text-[11px] text-slate-500 dark:text-slate-400 font-normal">
               {t("brand.subtitle", lang)}
             </div>
           </div>
         </button>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-1.5 p-1 rounded-full bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
-              <Button
+              <button
                 key={item.label}
-                variant={item.active ? "default" : "ghost"}
-                size="sm"
                 onClick={item.onClick}
-                className="gap-2"
+                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
+                  item.active
+                    ? "bg-white dark:bg-slate-800 text-slate-950 dark:text-white shadow-xs font-semibold"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-white/50"
+                }`}
               >
-                <Icon className="h-4 w-4" aria-hidden />
+                <Icon className="h-3.5 w-3.5" aria-hidden />
                 {item.label}
-              </Button>
+              </button>
             );
           })}
         </nav>
 
         {/* Right actions — single Sign in / Sign out for everyone */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-2">
           {session && <NotificationsBell />}
           <LanguageToggle />
 
@@ -130,9 +132,9 @@ export function Header() {
                   variant="outline"
                   size="sm"
                   onClick={() => setView({ name: "applicant-dashboard" })}
-                  className="gap-2 hidden sm:inline-flex"
+                  className="rounded-full text-xs gap-1.5 hidden sm:inline-flex border-slate-200 dark:border-slate-800"
                 >
-                  <LayoutDashboard className="h-4 w-4" aria-hidden />
+                  <LayoutDashboard className="h-3.5 w-3.5" aria-hidden />
                   {t("nav.applicant", lang)}
                 </Button>
               )}
@@ -141,9 +143,9 @@ export function Header() {
                   variant="default"
                   size="sm"
                   onClick={() => setView({ name: "admin" })}
-                  className="gap-2 hidden sm:inline-flex"
+                  className="rounded-full text-xs gap-1.5 hidden sm:inline-flex bg-primary hover:bg-primary/90 text-white"
                 >
-                  <ShieldCheck className="h-4 w-4" aria-hidden />
+                  <ShieldCheck className="h-3.5 w-3.5" aria-hidden />
                   {t("nav.admin", lang)}
                 </Button>
               )}
@@ -151,9 +153,9 @@ export function Header() {
                 variant="outline"
                 size="sm"
                 onClick={handleLogout}
-                className="gap-2"
+                className="rounded-full text-xs gap-1.5 border-slate-200 dark:border-slate-800"
               >
-                <LogOut className="h-4 w-4" aria-hidden />
+                <LogOut className="h-3.5 w-3.5" aria-hidden />
                 <span className="hidden sm:inline">{t("nav.logout", lang)}</span>
               </Button>
             </>
@@ -164,11 +166,10 @@ export function Header() {
                 variant={isApplicantView ? "default" : "outline"}
                 size="sm"
                 onClick={() => setView({ name: "login" })}
-                className="gap-2"
+                className="rounded-full text-xs font-semibold px-4 h-9 gap-1.5 border-slate-200 dark:border-slate-800 shadow-xs"
               >
                 <UserCircle className="h-4 w-4" aria-hidden />
-                <span className="hidden sm:inline">{t("nav.login", lang)}</span>
-                <span className="sm:hidden">{t("nav.login", lang)}</span>
+                <span>{t("nav.login", lang)}</span>
               </Button>
             </>
           )}
